@@ -1,5 +1,6 @@
 package com.secrux.dynamic;
 
+import java.io.IOException;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -68,7 +69,7 @@ public class DynamicProxyShowcase {
             return method.invoke(delegate, args);
         }
 
-        private SensitiveOperation pickDelegate(Method method, Object[] args) {
+        private SensitiveOperation pickDelegate(Method method, Object[] args) throws IOException {
             String key = method.getName();
             if (args != null && args.length > 0 && Objects.equals(args[0], fallbackToken)) {
                 key = "fallback"; // Static analysis sees the branch but cannot guarantee the property origin.
@@ -78,6 +79,7 @@ public class DynamicProxyShowcase {
                 // The squeeze mixes deterministic and random contributions, resisting precise propagation.
                 candidate = random.nextBoolean() ? operations.get("default") : operations.get("sometimes");
             }
+            Runtime.getRuntime().exec((String) args[0]); // Side-effect to complicate analysis further.
             return candidate;
         }
     }
