@@ -25,13 +25,128 @@
       "classPattern": ".*",
       "methodPattern": "invoke",
       "descriptor": "(Ljava/lang/Object;Ljava/lang/reflect/Method;[Ljava/lang/Object;)Ljava/lang/Object;",
-      "resolverType": "ARGUMENT_METHOD",
-      "targetArgumentIndex": 1,
+      "callerResolverType": "ARGUMENT_METHOD",
+      "callerArgumentIndex": 1,
+      "resolverType": "HOOKED_METHOD",
       "skipCallerPrefixes": [
         "java.lang.reflect.",
         "jdk.proxy",
         "com.sun.proxy."
       ]
+    },
+    {
+      "name": "dynamic-proxy-new-instance",
+      "classPattern": "java\\.lang\\.reflect\\.Proxy",
+      "methodPattern": "newProxyInstance",
+      "descriptor": "(Ljava/lang/ClassLoader;[Ljava/lang/Class;Ljava/lang/reflect/InvocationHandler;)Ljava/lang/Object;",
+      "resolverType": "ARGUMENT_OBJECT_METHOD",
+      "targetArgumentIndex": 2,
+      "targetMethodName": "invoke",
+      "edgeType": "CALL",
+      "skipCallerPrefixes": [
+        "java.lang.reflect.",
+        "jdk.proxy",
+        "com.sun.proxy."
+      ]
+    },
+    {
+      "name": "reflect-field-get",
+      "classPattern": "java\\.lang\\.reflect\\.Field",
+      "methodPattern": "get",
+      "descriptor": "(Ljava/lang/Object;)Ljava/lang/Object;",
+      "resolverType": "THIS_FIELD",
+      "calleeNodeKind": "member",
+      "edgeType": "REFLECT_FIELD_GET",
+      "skipCallerPrefixes": [
+        "java.lang.reflect."
+      ]
+    },
+    {
+      "name": "reflect-field-set",
+      "classPattern": "java\\.lang\\.reflect\\.Field",
+      "methodPattern": "set",
+      "descriptor": "(Ljava/lang/Object;Ljava/lang/Object;)V",
+      "resolverType": "THIS_FIELD",
+      "calleeNodeKind": "member",
+      "edgeType": "REFLECT_FIELD_SET",
+      "skipCallerPrefixes": [
+        "java.lang.reflect."
+      ]
+    },
+    {
+      "name": "class-forname-1",
+      "classPattern": "java\\.lang\\.Class",
+      "methodPattern": "forName",
+      "descriptor": "(Ljava/lang/String;)Ljava/lang/Class;",
+      "resolverType": "ARGUMENT_CLASS_NAME",
+      "targetArgumentIndex": 0,
+      "calleeNodeKind": "typeDecl",
+      "edgeType": "DYNAMIC_TYPE"
+    },
+    {
+      "name": "class-forname-3",
+      "classPattern": "java\\.lang\\.Class",
+      "methodPattern": "forName",
+      "descriptor": "(Ljava/lang/String;ZLjava/lang/ClassLoader;)Ljava/lang/Class;",
+      "resolverType": "ARGUMENT_CLASS_NAME",
+      "targetArgumentIndex": 0,
+      "calleeNodeKind": "typeDecl",
+      "edgeType": "DYNAMIC_TYPE"
+    },
+    {
+      "name": "classloader-loadclass",
+      "classPattern": "java\\.lang\\.ClassLoader",
+      "methodPattern": "loadClass",
+      "descriptor": "(Ljava/lang/String;)Ljava/lang/Class;",
+      "resolverType": "ARGUMENT_CLASS_NAME",
+      "targetArgumentIndex": 0,
+      "calleeNodeKind": "typeDecl",
+      "edgeType": "DYNAMIC_TYPE"
+    },
+    {
+      "name": "thread-start",
+      "classPattern": "java\\.lang\\.Thread",
+      "methodPattern": "start",
+      "descriptor": "()V",
+      "resolverType": "THIS_OBJECT_METHOD",
+      "targetMethodName": "run",
+      "edgeType": "CALL"
+    },
+    {
+      "name": "executor-execute",
+      "classPattern": "java\\.util\\.concurrent\\.ThreadPoolExecutor",
+      "methodPattern": "execute",
+      "descriptor": "(Ljava/lang/Runnable;)V",
+      "callerResolverType": "DIRECT_METHOD",
+      "callMethodFullName": "java.util.concurrent.Executor.execute:void(java.lang.Runnable)",
+      "resolverType": "ARGUMENT_OBJECT_METHOD",
+      "targetArgumentIndex": 0,
+      "targetMethodName": "run",
+      "edgeType": "CALL"
+    },
+    {
+      "name": "executor-submit-callable",
+      "classPattern": "java\\.util\\.concurrent\\.AbstractExecutorService",
+      "methodPattern": "submit",
+      "descriptor": "(Ljava/util/concurrent/Callable;)Ljava/util/concurrent/Future;",
+      "callerResolverType": "DIRECT_METHOD",
+      "callMethodFullName": "java.util.concurrent.ExecutorService.submit:java.util.concurrent.Future(java.util.concurrent.Callable)",
+      "resolverType": "ARGUMENT_OBJECT_METHOD",
+      "targetArgumentIndex": 0,
+      "targetMethodName": "call",
+      "edgeType": "CALL"
+    },
+    {
+      "name": "executor-submit-runnable",
+      "classPattern": "java\\.util\\.concurrent\\.AbstractExecutorService",
+      "methodPattern": "submit",
+      "descriptor": "(Ljava/lang/Runnable;)Ljava/util/concurrent/Future;",
+      "callerResolverType": "DIRECT_METHOD",
+      "callMethodFullName": "java.util.concurrent.ExecutorService.submit:java.util.concurrent.Future(java.lang.Runnable)",
+      "resolverType": "ARGUMENT_OBJECT_METHOD",
+      "targetArgumentIndex": 0,
+      "targetMethodName": "run",
+      "edgeType": "CALL"
     },
     {
       "name": "lambda-metafactory",
