@@ -21,6 +21,62 @@
       ]
     },
     {
+      "name": "reflect-lookup-method",
+      "classPattern": "java\\.lang\\.Class",
+      "methodPattern": "getMethod",
+      "descriptor": "(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;",
+      "timing": "EXIT",
+      "resolverType": "RETURNED_METHOD",
+      "edgeType": "REFLECT_LOOKUP_METHOD"
+    },
+    {
+      "name": "reflect-lookup-declared-method",
+      "classPattern": "java\\.lang\\.Class",
+      "methodPattern": "getDeclaredMethod",
+      "descriptor": "(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;",
+      "timing": "EXIT",
+      "resolverType": "RETURNED_METHOD",
+      "edgeType": "REFLECT_LOOKUP_METHOD"
+    },
+    {
+      "name": "reflect-lookup-constructor",
+      "classPattern": "java\\.lang\\.Class",
+      "methodPattern": "getConstructor",
+      "descriptor": "([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;",
+      "timing": "EXIT",
+      "resolverType": "RETURNED_CONSTRUCTOR",
+      "edgeType": "REFLECT_LOOKUP_CONSTRUCTOR"
+    },
+    {
+      "name": "reflect-lookup-declared-constructor",
+      "classPattern": "java\\.lang\\.Class",
+      "methodPattern": "getDeclaredConstructor",
+      "descriptor": "([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;",
+      "timing": "EXIT",
+      "resolverType": "RETURNED_CONSTRUCTOR",
+      "edgeType": "REFLECT_LOOKUP_CONSTRUCTOR"
+    },
+    {
+      "name": "reflect-lookup-field",
+      "classPattern": "java\\.lang\\.Class",
+      "methodPattern": "getField",
+      "descriptor": "(Ljava/lang/String;)Ljava/lang/reflect/Field;",
+      "timing": "EXIT",
+      "resolverType": "RETURNED_FIELD",
+      "calleeNodeKind": "member",
+      "edgeType": "REFLECT_LOOKUP_FIELD"
+    },
+    {
+      "name": "reflect-lookup-declared-field",
+      "classPattern": "java\\.lang\\.Class",
+      "methodPattern": "getDeclaredField",
+      "descriptor": "(Ljava/lang/String;)Ljava/lang/reflect/Field;",
+      "timing": "EXIT",
+      "resolverType": "RETURNED_FIELD",
+      "calleeNodeKind": "member",
+      "edgeType": "REFLECT_LOOKUP_FIELD"
+    },
+    {
       "name": "dynamic-proxy-invoke",
       "classPattern": ".*",
       "methodPattern": "invoke",
@@ -149,6 +205,356 @@
       "edgeType": "CALL"
     },
     {
+      "name": "completablefuture-supplyasync",
+      "classPattern": "java\\.util\\.concurrent\\.CompletableFuture",
+      "methodPattern": "supplyAsync",
+      "resolverType": "ARGUMENT_OBJECT_METHOD",
+      "targetArgumentIndex": 0,
+      "targetMethodName": "get",
+      "edgeType": "CALL",
+      "edgeProperty": "async:completablefuture",
+      "skipCallerPrefixes": [
+        "java.util.concurrent.",
+        "java.lang.invoke.",
+        "jdk.internal."
+      ]
+    },
+    {
+      "name": "completablefuture-runasync",
+      "classPattern": "java\\.util\\.concurrent\\.CompletableFuture",
+      "methodPattern": "runAsync",
+      "resolverType": "ARGUMENT_OBJECT_METHOD",
+      "targetArgumentIndex": 0,
+      "targetMethodName": "run",
+      "edgeType": "CALL",
+      "edgeProperty": "async:completablefuture",
+      "skipCallerPrefixes": [
+        "java.util.concurrent.",
+        "java.lang.invoke.",
+        "jdk.internal."
+      ]
+    },
+    {
+      "name": "completablefuture-thenapplyasync",
+      "classPattern": "java\\.util\\.concurrent\\.CompletableFuture",
+      "methodPattern": "thenApplyAsync",
+      "resolverType": "ARGUMENT_OBJECT_METHOD",
+      "targetArgumentIndex": 0,
+      "targetMethodName": "apply",
+      "edgeType": "CALL",
+      "edgeProperty": "async:completablefuture",
+      "skipCallerPrefixes": [
+        "java.util.concurrent.",
+        "java.lang.invoke.",
+        "jdk.internal."
+      ]
+    },
+    {
+      "name": "completablefuture-thencomposeasync",
+      "classPattern": "java\\.util\\.concurrent\\.CompletableFuture",
+      "methodPattern": "thenComposeAsync",
+      "resolverType": "ARGUMENT_OBJECT_METHOD",
+      "targetArgumentIndex": 0,
+      "targetMethodName": "apply",
+      "edgeType": "CALL",
+      "edgeProperty": "async:completablefuture",
+      "skipCallerPrefixes": [
+        "java.util.concurrent.",
+        "java.lang.invoke.",
+        "jdk.internal."
+      ]
+    },
+    {
+      "name": "completablefuture-thenacceptasync",
+      "classPattern": "java\\.util\\.concurrent\\.CompletableFuture",
+      "methodPattern": "thenAcceptAsync",
+      "resolverType": "ARGUMENT_OBJECT_METHOD",
+      "targetArgumentIndex": 0,
+      "targetMethodName": "accept",
+      "edgeType": "CALL",
+      "edgeProperty": "async:completablefuture",
+      "skipCallerPrefixes": [
+        "java.util.concurrent.",
+        "java.lang.invoke.",
+        "jdk.internal."
+      ]
+    },
+    {
+      "name": "completablefuture-thenrunasync",
+      "classPattern": "java\\.util\\.concurrent\\.CompletableFuture",
+      "methodPattern": "thenRunAsync",
+      "resolverType": "ARGUMENT_OBJECT_METHOD",
+      "targetArgumentIndex": 0,
+      "targetMethodName": "run",
+      "edgeType": "CALL",
+      "edgeProperty": "async:completablefuture",
+      "skipCallerPrefixes": [
+        "java.util.concurrent.",
+        "java.lang.invoke.",
+        "jdk.internal."
+      ]
+    },
+    {
+      "name": "completablefuture-thencombineasync",
+      "classPattern": "java\\.util\\.concurrent\\.CompletableFuture",
+      "methodPattern": "thenCombineAsync",
+      "resolverType": "ARGUMENT_OBJECT_METHOD",
+      "targetArgumentIndex": 1,
+      "targetMethodName": "apply",
+      "edgeType": "CALL",
+      "edgeProperty": "async:completablefuture",
+      "skipCallerPrefixes": [
+        "java.util.concurrent.",
+        "java.lang.invoke.",
+        "jdk.internal."
+      ]
+    },
+    {
+      "name": "completablefuture-whencompleteasync",
+      "classPattern": "java\\.util\\.concurrent\\.CompletableFuture",
+      "methodPattern": "whenCompleteAsync",
+      "resolverType": "ARGUMENT_OBJECT_METHOD",
+      "targetArgumentIndex": 0,
+      "targetMethodName": "accept",
+      "edgeType": "CALL",
+      "edgeProperty": "async:completablefuture",
+      "skipCallerPrefixes": [
+        "java.util.concurrent.",
+        "java.lang.invoke.",
+        "jdk.internal."
+      ]
+    },
+    {
+      "name": "completablefuture-handleasync",
+      "classPattern": "java\\.util\\.concurrent\\.CompletableFuture",
+      "methodPattern": "handleAsync",
+      "resolverType": "ARGUMENT_OBJECT_METHOD",
+      "targetArgumentIndex": 0,
+      "targetMethodName": "apply",
+      "edgeType": "CALL",
+      "edgeProperty": "async:completablefuture",
+      "skipCallerPrefixes": [
+        "java.util.concurrent.",
+        "java.lang.invoke.",
+        "jdk.internal."
+      ]
+    },
+    {
+      "name": "completablefuture-exceptionallyasync",
+      "classPattern": "java\\.util\\.concurrent\\.CompletableFuture",
+      "methodPattern": "exceptionallyAsync",
+      "resolverType": "ARGUMENT_OBJECT_METHOD",
+      "targetArgumentIndex": 0,
+      "targetMethodName": "apply",
+      "edgeType": "CALL",
+      "edgeProperty": "async:completablefuture",
+      "skipCallerPrefixes": [
+        "java.util.concurrent.",
+        "java.lang.invoke.",
+        "jdk.internal."
+      ]
+    },
+    {
+      "name": "completablefuture-exceptionallycomposeasync",
+      "classPattern": "java\\.util\\.concurrent\\.CompletableFuture",
+      "methodPattern": "exceptionallyComposeAsync",
+      "resolverType": "ARGUMENT_OBJECT_METHOD",
+      "targetArgumentIndex": 0,
+      "targetMethodName": "apply",
+      "edgeType": "CALL",
+      "edgeProperty": "async:completablefuture",
+      "skipCallerPrefixes": [
+        "java.util.concurrent.",
+        "java.lang.invoke.",
+        "jdk.internal."
+      ]
+    },
+    {
+      "name": "completablefuture-thenacceptbothasync",
+      "classPattern": "java\\.util\\.concurrent\\.CompletableFuture",
+      "methodPattern": "thenAcceptBothAsync",
+      "resolverType": "ARGUMENT_OBJECT_METHOD",
+      "targetArgumentIndex": 1,
+      "targetMethodName": "accept",
+      "edgeType": "CALL",
+      "edgeProperty": "async:completablefuture",
+      "skipCallerPrefixes": [
+        "java.util.concurrent.",
+        "java.lang.invoke.",
+        "jdk.internal."
+      ]
+    },
+    {
+      "name": "completablefuture-runafterbothasync",
+      "classPattern": "java\\.util\\.concurrent\\.CompletableFuture",
+      "methodPattern": "runAfterBothAsync",
+      "resolverType": "ARGUMENT_OBJECT_METHOD",
+      "targetArgumentIndex": 1,
+      "targetMethodName": "run",
+      "edgeType": "CALL",
+      "edgeProperty": "async:completablefuture",
+      "skipCallerPrefixes": [
+        "java.util.concurrent.",
+        "java.lang.invoke.",
+        "jdk.internal."
+      ]
+    },
+    {
+      "name": "completablefuture-applytoeitherasync",
+      "classPattern": "java\\.util\\.concurrent\\.CompletableFuture",
+      "methodPattern": "applyToEitherAsync",
+      "resolverType": "ARGUMENT_OBJECT_METHOD",
+      "targetArgumentIndex": 1,
+      "targetMethodName": "apply",
+      "edgeType": "CALL",
+      "edgeProperty": "async:completablefuture",
+      "skipCallerPrefixes": [
+        "java.util.concurrent.",
+        "java.lang.invoke.",
+        "jdk.internal."
+      ]
+    },
+    {
+      "name": "completablefuture-accepteitherasync",
+      "classPattern": "java\\.util\\.concurrent\\.CompletableFuture",
+      "methodPattern": "acceptEitherAsync",
+      "resolverType": "ARGUMENT_OBJECT_METHOD",
+      "targetArgumentIndex": 1,
+      "targetMethodName": "accept",
+      "edgeType": "CALL",
+      "edgeProperty": "async:completablefuture",
+      "skipCallerPrefixes": [
+        "java.util.concurrent.",
+        "java.lang.invoke.",
+        "jdk.internal."
+      ]
+    },
+    {
+      "name": "completablefuture-runaftereitherasync",
+      "classPattern": "java\\.util\\.concurrent\\.CompletableFuture",
+      "methodPattern": "runAfterEitherAsync",
+      "resolverType": "ARGUMENT_OBJECT_METHOD",
+      "targetArgumentIndex": 1,
+      "targetMethodName": "run",
+      "edgeType": "CALL",
+      "edgeProperty": "async:completablefuture",
+      "skipCallerPrefixes": [
+        "java.util.concurrent.",
+        "java.lang.invoke.",
+        "jdk.internal."
+      ]
+    },
+    {
+      "name": "scheduled-executor-schedule-runnable",
+      "classPattern": "java\\.util\\.concurrent\\.ScheduledThreadPoolExecutor",
+      "methodPattern": "schedule",
+      "descriptor": "(Ljava/lang/Runnable;JLjava/util/concurrent/TimeUnit;)Ljava/util/concurrent/ScheduledFuture;",
+      "resolverType": "ARGUMENT_OBJECT_METHOD",
+      "targetArgumentIndex": 0,
+      "targetMethodName": "run",
+      "edgeType": "CALL",
+      "edgeProperty": "async:schedule"
+    },
+    {
+      "name": "scheduled-executor-schedule-callable",
+      "classPattern": "java\\.util\\.concurrent\\.ScheduledThreadPoolExecutor",
+      "methodPattern": "schedule",
+      "descriptor": "(Ljava/util/concurrent/Callable;JLjava/util/concurrent/TimeUnit;)Ljava/util/concurrent/ScheduledFuture;",
+      "resolverType": "ARGUMENT_OBJECT_METHOD",
+      "targetArgumentIndex": 0,
+      "targetMethodName": "call",
+      "edgeType": "CALL",
+      "edgeProperty": "async:schedule"
+    },
+    {
+      "name": "scheduled-executor-schedule-at-fixed-rate",
+      "classPattern": "java\\.util\\.concurrent\\.ScheduledThreadPoolExecutor",
+      "methodPattern": "scheduleAtFixedRate",
+      "descriptor": "(Ljava/lang/Runnable;JJLjava/util/concurrent/TimeUnit;)Ljava/util/concurrent/ScheduledFuture;",
+      "resolverType": "ARGUMENT_OBJECT_METHOD",
+      "targetArgumentIndex": 0,
+      "targetMethodName": "run",
+      "edgeType": "CALL",
+      "edgeProperty": "async:schedule"
+    },
+    {
+      "name": "scheduled-executor-schedule-with-fixed-delay",
+      "classPattern": "java\\.util\\.concurrent\\.ScheduledThreadPoolExecutor",
+      "methodPattern": "scheduleWithFixedDelay",
+      "descriptor": "(Ljava/lang/Runnable;JJLjava/util/concurrent/TimeUnit;)Ljava/util/concurrent/ScheduledFuture;",
+      "resolverType": "ARGUMENT_OBJECT_METHOD",
+      "targetArgumentIndex": 0,
+      "targetMethodName": "run",
+      "edgeType": "CALL",
+      "edgeProperty": "async:schedule"
+    },
+    {
+      "name": "timer-schedule-delay",
+      "classPattern": "java\\.util\\.Timer",
+      "methodPattern": "schedule",
+      "descriptor": "(Ljava/util/TimerTask;J)V",
+      "resolverType": "ARGUMENT_OBJECT_METHOD",
+      "targetArgumentIndex": 0,
+      "targetMethodName": "run",
+      "edgeType": "CALL",
+      "edgeProperty": "async:timer"
+    },
+    {
+      "name": "timer-schedule-date",
+      "classPattern": "java\\.util\\.Timer",
+      "methodPattern": "schedule",
+      "descriptor": "(Ljava/util/TimerTask;Ljava/util/Date;)V",
+      "resolverType": "ARGUMENT_OBJECT_METHOD",
+      "targetArgumentIndex": 0,
+      "targetMethodName": "run",
+      "edgeType": "CALL",
+      "edgeProperty": "async:timer"
+    },
+    {
+      "name": "timer-schedule-delay-period",
+      "classPattern": "java\\.util\\.Timer",
+      "methodPattern": "schedule",
+      "descriptor": "(Ljava/util/TimerTask;JJ)V",
+      "resolverType": "ARGUMENT_OBJECT_METHOD",
+      "targetArgumentIndex": 0,
+      "targetMethodName": "run",
+      "edgeType": "CALL",
+      "edgeProperty": "async:timer"
+    },
+    {
+      "name": "timer-schedule-date-period",
+      "classPattern": "java\\.util\\.Timer",
+      "methodPattern": "schedule",
+      "descriptor": "(Ljava/util/TimerTask;Ljava/util/Date;J)V",
+      "resolverType": "ARGUMENT_OBJECT_METHOD",
+      "targetArgumentIndex": 0,
+      "targetMethodName": "run",
+      "edgeType": "CALL",
+      "edgeProperty": "async:timer"
+    },
+    {
+      "name": "timer-schedule-at-fixed-rate-delay",
+      "classPattern": "java\\.util\\.Timer",
+      "methodPattern": "scheduleAtFixedRate",
+      "descriptor": "(Ljava/util/TimerTask;JJ)V",
+      "resolverType": "ARGUMENT_OBJECT_METHOD",
+      "targetArgumentIndex": 0,
+      "targetMethodName": "run",
+      "edgeType": "CALL",
+      "edgeProperty": "async:timer"
+    },
+    {
+      "name": "timer-schedule-at-fixed-rate-date",
+      "classPattern": "java\\.util\\.Timer",
+      "methodPattern": "scheduleAtFixedRate",
+      "descriptor": "(Ljava/util/TimerTask;Ljava/util/Date;J)V",
+      "resolverType": "ARGUMENT_OBJECT_METHOD",
+      "targetArgumentIndex": 0,
+      "targetMethodName": "run",
+      "edgeType": "CALL",
+      "edgeProperty": "async:timer"
+    },
+    {
       "name": "lambda-metafactory",
       "classPattern": "java\\.lang\\.invoke\\.LambdaMetafactory",
       "methodPattern": "metafactory",
@@ -172,6 +578,229 @@
         "java.lang.invoke.",
         "jdk.internal",
         "com.secrux.agent"
+      ]
+    },
+    {
+      "name": "spi-serviceloader-get-constructor",
+      "classPattern": "java\\.util\\.ServiceLoader",
+      "methodPattern": "getConstructor",
+      "descriptor": "(Ljava/lang/Class;)Ljava/lang/reflect/Constructor;",
+      "timing": "EXIT",
+      "resolverType": "RETURNED_CONSTRUCTOR",
+      "edgeProperty": "spi:provider",
+      "skipCallerPrefixes": [
+        "java.util.ServiceLoader",
+        "jdk.internal.module."
+      ]
+    },
+    {
+      "name": "spi-serviceloader-find-static-provider-method",
+      "classPattern": "java\\.util\\.ServiceLoader",
+      "methodPattern": "findStaticProviderMethod",
+      "descriptor": "(Ljava/lang/Class;)Ljava/lang/reflect/Method;",
+      "timing": "EXIT",
+      "resolverType": "RETURNED_METHOD",
+      "edgeProperty": "spi:provider",
+      "skipCallerPrefixes": [
+        "java.util.ServiceLoader",
+        "jdk.internal.module."
+      ]
+    },
+    {
+      "name": "classloader-defineclass-name-bytes",
+      "classPattern": "java\\.lang\\.ClassLoader",
+      "methodPattern": "defineClass",
+      "descriptor": "(Ljava/lang/String;[BII)Ljava/lang/Class;",
+      "timing": "EXIT",
+      "resolverType": "RETURNED_CLASS",
+      "calleeNodeKind": "typeDecl",
+      "edgeType": "DYNAMIC_TYPE",
+      "skipCallerPrefixes": [
+        "java.lang.ClassLoader",
+        "jdk.internal.loader."
+      ]
+    },
+    {
+      "name": "classloader-defineclass-bytes",
+      "classPattern": "java\\.lang\\.ClassLoader",
+      "methodPattern": "defineClass",
+      "descriptor": "([BII)Ljava/lang/Class;",
+      "timing": "EXIT",
+      "resolverType": "RETURNED_CLASS",
+      "calleeNodeKind": "typeDecl",
+      "edgeType": "DYNAMIC_TYPE",
+      "skipCallerPrefixes": [
+        "java.lang.ClassLoader",
+        "jdk.internal.loader."
+      ]
+    },
+    {
+      "name": "classloader-defineclass-protection-domain",
+      "classPattern": "java\\.lang\\.ClassLoader",
+      "methodPattern": "defineClass",
+      "descriptor": "(Ljava/lang/String;[BIILjava/security/ProtectionDomain;)Ljava/lang/Class;",
+      "timing": "EXIT",
+      "resolverType": "RETURNED_CLASS",
+      "calleeNodeKind": "typeDecl",
+      "edgeType": "DYNAMIC_TYPE",
+      "skipCallerPrefixes": [
+        "java.lang.ClassLoader",
+        "jdk.internal.loader."
+      ]
+    },
+    {
+      "name": "classloader-defineclass-bytebuffer",
+      "classPattern": "java\\.lang\\.ClassLoader",
+      "methodPattern": "defineClass",
+      "descriptor": "(Ljava/lang/String;Ljava/nio/ByteBuffer;Ljava/security/ProtectionDomain;)Ljava/lang/Class;",
+      "timing": "EXIT",
+      "resolverType": "RETURNED_CLASS",
+      "calleeNodeKind": "typeDecl",
+      "edgeType": "DYNAMIC_TYPE",
+      "skipCallerPrefixes": [
+        "java.lang.ClassLoader",
+        "jdk.internal.loader."
+      ]
+    },
+    {
+      "name": "lookup-defineclass",
+      "classPattern": "java\\.lang\\.invoke\\.MethodHandles\\$Lookup",
+      "methodPattern": "defineClass",
+      "descriptor": "([B)Ljava/lang/Class;",
+      "timing": "EXIT",
+      "resolverType": "RETURNED_CLASS",
+      "calleeNodeKind": "typeDecl",
+      "edgeType": "DYNAMIC_TYPE",
+      "skipCallerPrefixes": [
+        "java.lang.invoke.",
+        "jdk.internal",
+        "com.secrux.agent"
+      ]
+    },
+    {
+      "name": "lookup-definehiddenclass",
+      "classPattern": "java\\.lang\\.invoke\\.MethodHandles\\$Lookup",
+      "methodPattern": "defineHiddenClass",
+      "descriptor": "([BZ[Ljava/lang/invoke/MethodHandles\\$Lookup\\$ClassOption;)Ljava/lang/invoke/MethodHandles\\$Lookup;",
+      "timing": "EXIT",
+      "resolverType": "RETURNED_LOOKUP_CLASS",
+      "calleeNodeKind": "typeDecl",
+      "edgeType": "DYNAMIC_TYPE",
+      "skipCallerPrefixes": [
+        "java.lang.invoke.",
+        "jdk.internal",
+        "com.secrux.agent"
+      ]
+    },
+    {
+      "name": "lookup-definehiddenclass-with-class-data",
+      "classPattern": "java\\.lang\\.invoke\\.MethodHandles\\$Lookup",
+      "methodPattern": "defineHiddenClassWithClassData",
+      "descriptor": "([BLjava/lang/Object;Z[Ljava/lang/invoke/MethodHandles\\$Lookup\\$ClassOption;)Ljava/lang/invoke/MethodHandles\\$Lookup;",
+      "timing": "EXIT",
+      "resolverType": "RETURNED_LOOKUP_CLASS",
+      "calleeNodeKind": "typeDecl",
+      "edgeType": "DYNAMIC_TYPE",
+      "skipCallerPrefixes": [
+        "java.lang.invoke.",
+        "jdk.internal",
+        "com.secrux.agent"
+      ]
+    },
+    {
+      "name": "accesscontroller-doprivileged",
+      "classPattern": "java\\.security\\.AccessController",
+      "methodPattern": "doPrivileged",
+      "timing": "ENTER",
+      "resolverType": "ARGUMENT_OBJECT_METHOD",
+      "targetArgumentIndex": 0,
+      "targetMethodName": "run",
+      "edgeType": "CALL",
+      "edgeProperty": "security:privileged",
+      "skipCallerPrefixes": [
+        "java.security.",
+        "sun.security.",
+        "jdk.internal."
+      ]
+    },
+    {
+      "name": "accesscontroller-doprivileged-with-combiner",
+      "classPattern": "java\\.security\\.AccessController",
+      "methodPattern": "doPrivilegedWithCombiner",
+      "timing": "ENTER",
+      "resolverType": "ARGUMENT_OBJECT_METHOD",
+      "targetArgumentIndex": 0,
+      "targetMethodName": "run",
+      "edgeType": "CALL",
+      "edgeProperty": "security:privileged",
+      "skipCallerPrefixes": [
+        "java.security.",
+        "sun.security.",
+        "jdk.internal."
+      ]
+    },
+    {
+      "name": "reflect-access-setaccessible",
+      "classPattern": "java\\.lang\\.reflect\\.AccessibleObject",
+      "methodPattern": "setAccessible",
+      "descriptor": "(Z)V",
+      "timing": "EXIT",
+      "resolverType": "THIS_REFLECTIVE_MEMBER",
+      "calleeNodeKind": "member",
+      "edgeType": "REFLECT_ACCESS",
+      "edgeProperty": "reflect:access",
+      "skipCallerPrefixes": [
+        "java.lang.reflect.",
+        "sun.reflect.",
+        "jdk.internal.reflect."
+      ]
+    },
+    {
+      "name": "reflect-access-trysetaccessible",
+      "classPattern": "java\\.lang\\.reflect\\.AccessibleObject",
+      "methodPattern": "trySetAccessible",
+      "descriptor": "()Z",
+      "timing": "EXIT",
+      "resolverType": "THIS_REFLECTIVE_MEMBER",
+      "calleeNodeKind": "member",
+      "edgeType": "REFLECT_ACCESS",
+      "edgeProperty": "reflect:access",
+      "skipCallerPrefixes": [
+        "java.lang.reflect.",
+        "sun.reflect.",
+        "jdk.internal.reflect."
+      ]
+    },
+    {
+      "name": "serialization-resolve-class",
+      "classPattern": "java\\.io\\.ObjectInputStream",
+      "methodPattern": "resolveClass",
+      "descriptor": "(Ljava/io/ObjectStreamClass;)Ljava/lang/Class;",
+      "timing": "EXIT",
+      "resolverType": "RETURNED_CLASS",
+      "calleeNodeKind": "typeDecl",
+      "edgeType": "DYNAMIC_TYPE",
+      "edgeProperty": "serialization:resolve",
+      "skipCallerPrefixes": [
+        "java.io.",
+        "sun.reflect.",
+        "jdk.internal.reflect."
+      ]
+    },
+    {
+      "name": "serialization-resolve-proxy-class",
+      "classPattern": "java\\.io\\.ObjectInputStream",
+      "methodPattern": "resolveProxyClass",
+      "descriptor": "([Ljava/lang/String;)Ljava/lang/Class;",
+      "timing": "EXIT",
+      "resolverType": "RETURNED_CLASS",
+      "calleeNodeKind": "typeDecl",
+      "edgeType": "DYNAMIC_TYPE",
+      "edgeProperty": "serialization:resolve",
+      "skipCallerPrefixes": [
+        "java.io.",
+        "sun.reflect.",
+        "jdk.internal.reflect."
       ]
     }
   ]
