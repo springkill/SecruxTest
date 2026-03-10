@@ -21,6 +21,16 @@
       ]
     },
     {
+      "name": "reflect-class-new-instance",
+      "classPattern": "java\\.lang\\.Class",
+      "methodPattern": "newInstance",
+      "descriptor": "()Ljava/lang/Object;",
+      "resolverType": "HOOKED_METHOD",
+      "skipCallerPrefixes": [
+        "java.lang.reflect."
+      ]
+    },
+    {
       "name": "reflect-lookup-method",
       "classPattern": "java\\.lang\\.Class",
       "methodPattern": "getMethod",
@@ -83,7 +93,8 @@
       "descriptor": "(Ljava/lang/Object;Ljava/lang/reflect/Method;[Ljava/lang/Object;)Ljava/lang/Object;",
       "callerResolverType": "ARGUMENT_METHOD",
       "callerArgumentIndex": 1,
-      "resolverType": "HOOKED_METHOD",
+      "resolverType": "ARGUMENT_METHOD",
+      "targetArgumentIndex": 1,
       "skipCallerPrefixes": [
         "java.lang.reflect.",
         "jdk.proxy",
